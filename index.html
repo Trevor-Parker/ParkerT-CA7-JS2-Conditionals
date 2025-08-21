@@ -26,11 +26,11 @@
       let computerChoice = "bear";
 // Locks Computer choice, defines valid choices, and asks the player for theirs
     
-      if {
+      if (
         (userChoice === "bear" && computerChoice === "hunter")||
         (userChoice === "ninja" && computerChoice === "bear")||
         (userChoice === "hunter" && computerChoice === "ninja")
-      }  
+      )
       {
         result = "You lose!";
       }
@@ -71,6 +71,7 @@
         default:
           alert("invalid input. Exiting game.");
           replay = "no"
+          break;
       }
 //Reads input to determine wheter the player wants to play again. If no exits while loop, if yes resarts loop
       
