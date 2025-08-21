@@ -25,14 +25,15 @@
       let userChoice = prompt("Who are you: Bear, Ninja, or Hunter").toLowerCase();
       let computerChoice = "bear";
 // Locks Computer choice, defines valid choices, and asks the player for theirs
-    
+
+      let result = "";
       if (
         (userChoice === "bear" && computerChoice === "hunter")||
         (userChoice === "ninja" && computerChoice === "bear")||
         (userChoice === "hunter" && computerChoice === "ninja")
       )
       {
-        let result = "You lose!";
+        result = "You lose!";
       }
       else if (
         (userChoice === "bear" && computerChoice === "ninja")||
@@ -40,10 +41,10 @@
         (userChoice === "hunter" && computerChoice === "bear")
       ) 
       {
-        let result = "You Win!";
+        result = "You Win!";
       }
       else {
-        let result = "You lose!";
+        result = "You lose!";
       }
 //Prompts depending on different choices
     
