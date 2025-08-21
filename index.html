@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bear, Ninja, Hunter</title>
+</head>
+<body>
+  <p id="demo">filler/replace</p>
 
+  <script>
+    let uname = prompt("To continue, please enter your uname: ");
+    let amessage = `You have entered: ${uname}`;
+    console.log(amessage + " this is an example of a hardcoded text string concatenated after a variable.");
+
+    document.getElementById('demo').innerHTML = `Welcome, ${uname}! Let's play Rock Paper Scissors.`;
+
+    const options = ["bear", "ninja", "hunter"];
+    let userChoice = prompt("Choose Bear, Ninja, or Hunter:").toLowerCase();
+    let computerChoice = "bear";
+    let result = '';
+
+if (userChoice === computerChoice) {
+      result = "Stalemate";
+    }
+  else if (
+      (userChoice === "bear" && computerChoice === "ninja") ||
+      (userChoice === "ninja" && computerChoice === "hunter) ||
+      (userChoice === "hunter" && computerChoice === "bear")
+    ) {
+      result = "Victory";
+    else {
+      result = "Failure";
+  }
+    
+    document.getElementById("demo").innerHTML += `
+      <br><br>You chose: ${userChoice}
+      <br>Computer chose: ${computerChoice}
+      <br><strong>${result}</strong>
+    `;
+
+    // Console and alert
+    console.log(`${uname} You chose ${userChoice}, The Computer chose ${computerChoice} → ${result}`);
+    alert(result);
+  </script>
+</body>
+</html>
