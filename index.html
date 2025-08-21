@@ -12,7 +12,8 @@
 <!-- PlaceHolder for after game -->
   <script>
     let replay = "yes";
-    
+//while loop to allow for replaying without functions. While instead of for since unknown number of iterations
+  
     while (replay === "yes") {
       let username = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started");
       console.log(username);
@@ -26,22 +27,23 @@
 // Locks Computer choice, defines valid choices, and asks the player for theirs
     
       if (userChoice === computerChoice) {
-        result = "It's a tie";
+        (userChoice === "bear" && computerChoice === "hunter")||
+        (userChoice === "ninja" && computerChoice === "bear")||
+        (userChoice === "hunter" && computerChoice === "ninja")
+      )  
+      {
+        result = "You lose!";
+      }
       }
       else if (
-        (userChoice === "bear" && computerChoice === "ninja")
-        (userChoice === "ninja" && computerChoice === "hunter")
+        (userChoice === "bear" && computerChoice === "ninja")||
+        (userChoice === "ninja" && computerChoice === "hunter")||
         (userChoice === "hunter" && computerChoice === "bear")
       ) 
       {
         result = "You Win!";
       }
-      else (
-        (userChoice === "bear" && computerChoice === "hunter")
-        (userChoice === "ninja" && computerChoice === "bear")
-        (userChoice === "hunter" && computerChoice === "ninja")
-      )  
-      {
+      else {
         result = "You lose!";
       }
 //Prompts depending on different choices
@@ -57,7 +59,8 @@
       console.log(result);
     
 //Writes out choices to the screen/webpage
-      replay = prompt("Do you want to play again? Yes or no").lowerCase();
+      replay = prompt("Do you want to play again? Yes or no").toLowerCase();
+//Asks to play again
       
       switch(replay) {
         case "yes":
@@ -65,6 +68,10 @@
         case "no":
           alert("Thanks for playing! Goodbye!");
           break;
+        default:
+          alert("invalid input. Exiting game.");
+          replay = "no"
+//Reads input to determine wheter the player wants to play again. If no exits while loop, if yes resarts loop
       
   </script>
 </body>
