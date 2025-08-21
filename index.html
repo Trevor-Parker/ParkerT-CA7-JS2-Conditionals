@@ -6,41 +6,33 @@
   <meta charset="UTF-8">
   <title>Bear, Ninja, Hunter</title>
 </head>
+<!-- Defines language, author, title, and encoding -->
 <body>
   <p id="demo">filler/replace</p>
 
   <script>
-    let uname = prompt("To continue, please enter your uname: ");
-    let amessage = `You have entered: ${uname}`;
-    console.log(amessage + " this is an example of a hardcoded text string concatenated after a variable.");
-
-    document.getElementById('demo').innerHTML = `Welcome, ${uname}! Let's play Bear, Ninja, Hunter.`;
+    let username = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started");
+      console.log(`Hi` + ${username} + `Let's Play!!`);
 
     const options = ["bear", "ninja", "hunter"];
-    let userChoice = prompt("Choose Bear, Ninja, or Hunter:").toLowerCase();
+    let userChoice = prompt("Who are you: Bear, Ninja, or Hunter").toLowerCase();
     let computerChoice = "bear";
-    let result = '';
 
-if (userChoice === computerChoice) {
-      result = "Stalemate";
-    }
-  else if (
-      (userChoice === "bear" && computerChoice === "ninja") ||
-      (userChoice === "ninja" && computerChoice === "hunter) ||
-      (userChoice === "hunter" && computerChoice === "bear")
-    ) {
-      result = "Victory";
-    else {
-      result = "Failure";
-  }
-    
-    document.getElementById("demo").innerHTML += `
-      <br><br>You chose: ${userChoice}
+    const boNoH = {
+      bear:     { bear: "It's a tie!", hunter: "You lose!", ninja: "You win!" },
+      ninja:    { ninja: "It's a tie!", bear: "You lose!", hunter: "You win!" },
+      hunter:   { hunter: "It's a tie!", ninja: "You lose!", bear: "You win!" }
+    };
+
+    const result = boNoH[userChoice][computerChoice];
+  
+    document.getElementById("demo").innerHTML = `
+      <br>You chose: ${userChoice}
       <br>Computer chose: ${computerChoice}
       <br><strong>${result}</strong>
     `;
-    
-    console.log(`${uname} You chose ${userChoice}, The Computer chose ${computerChoice} → ${result}`);
+
+    console.log(`${username} You chose ${userChoice}, The Computer chose ${computerChoice} → ${result}`);
     alert(result);
   </script>
 </body>
