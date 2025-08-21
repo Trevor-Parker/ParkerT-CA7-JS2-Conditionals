@@ -9,31 +9,74 @@
 <!-- Defines language, author, title, and encoding -->
 <body>
   <p id="demo">filler/replace</p>
-
+<!-- PlaceHolder for after game -->
   <script>
-    let username = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started");
-      console.log(`Hi` + ${username} + `Let's Play!!`);
-
-    const options = ["bear", "ninja", "hunter"];
-    let userChoice = prompt("Who are you: Bear, Ninja, or Hunter").toLowerCase();
-    let computerChoice = "bear";
-
-    const boNoH = {
-      bear:     { bear: "It's a tie!", hunter: "You lose!", ninja: "You win!" },
-      ninja:    { ninja: "It's a tie!", bear: "You lose!", hunter: "You win!" },
-      hunter:   { hunter: "It's a tie!", ninja: "You lose!", bear: "You win!" }
-    };
-
-    const result = boNoH[userChoice][computerChoice];
+    let replay = "yes";
+//while loop to allow for replaying without functions. While instead of for since unknown number of iterations
   
-    document.getElementById("demo").innerHTML = `
-      <br>You chose: ${userChoice}
-      <br>Computer chose: ${computerChoice}
-      <br><strong>${result}</strong>
-    `;
+    while (replay === "yes") {
+      let username = prompt("Welcome to Bear Hunter Ninja! Please enter your name to get started");
+      console.log(username);
+      let amessage = "Hi " + username + " Let\'s Play!!";
+      alert(amessage);
+// Lets user choose name and repeats it with a prompt 
+    
+      const options = ["bear", "ninja", "hunter"];
+      let userChoice = prompt("Who are you: Bear, Ninja, or Hunter").toLowerCase();
+      let computerChoice = "bear";
+// Locks Computer choice, defines valid choices, and asks the player for theirs
 
-    console.log(`${username} You chose ${userChoice}, The Computer chose ${computerChoice} → ${result}`);
-    alert(result);
+      let result;
+      if (
+        (userChoice === "bear" && computerChoice === "bear")||
+        (userChoice === "ninja" && computerChoice === "ninja")||
+        (userChoice === "hunter" && computerChoice === "hunter")
+      )
+      {
+        result = "Its a Tie!";
+      }
+      else if (
+        (userChoice === "bear" && computerChoice === "ninja")||
+        (userChoice === "ninja" && computerChoice === "hunter")||
+        (userChoice === "hunter" && computerChoice === "bear")
+      ) 
+      {
+        result = "You Win!";
+      }
+      else {
+        result = "You lose!";
+      }
+//Prompts depending on different choices
+    
+      document.getElementById("demo").innerHTML = `
+        <br>${username}, You Picked ${userChoice}!
+        <br>The computer picked ${computerChoice}!
+        <br><strong>${result}</strong>
+      `;
+//Rewites place holder with proviously selected choices
+
+      alert(result);
+      console.log(result);
+//Writes out choices to the screen/webpage
+      
+      replay = prompt("Do you want to play again? Yes or no").toLowerCase();
+//Asks to play again
+      
+      switch(replay) {
+        case "yes":
+          break;
+        case "no":
+          alert("Thanks for playing! Goodbye!");
+          replay = "no";
+          break;
+        default:
+          alert("invalid input. Exiting game.");
+          replay = "no";
+          break;
+      }
+    }
+//Reads input to determine wheter the player wants to play again. If no exits while loop, if yes resarts loop
+      
   </script>
 </body>
 </html>
